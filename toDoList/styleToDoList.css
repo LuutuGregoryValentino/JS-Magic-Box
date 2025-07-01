@@ -1,0 +1,113 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+
+
+}
+
+.container{
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1{
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+.input-section{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+#taskInput{
+    flex-grow: 1;
+    padding: 12px 15px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    outline: none;
+}
+
+#taskInput:focus{
+    border-color: #007bff;
+}
+
+#addTaskBtn{
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+
+}   
+#addTaskBtn:hover{
+    background-color: #0056b3;
+}
+
+#taskList{
+    list-style: none;
+    padding: 0;
+    text-align: left;
+
+}
+
+#taskList li{
+    background-color: #d5dee6;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+}
+
+#taskList li:last-child{
+    margin-bottom: 0;
+
+}
+
+.delete-btn{
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.2s ease;
+
+}
+
+.delete-btn:hover{
+    background-color: #c82333;
+
+}
+
+.completed{
+    text-decoration: line-through;
+    color: #888;
+    background-color: #e9ecef;
+    border-color: #d1d4d7;
+    
+}
+
