@@ -37,7 +37,7 @@ addTaksBtn.addEventListener("click",()=>{
     if (isDone){
         
         
-        newTask.style.backgroundColor="#d5fde5"
+        newTask.style.backgroundColor="#d5fdf5"
     }
     else{
         newTask.style.backgroundColor="#d5dee6"
