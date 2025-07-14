@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Cake Order List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🍰 Cake Order Manager 📝</h1>
+
+        <div class="input-section">
+            <h2>Add New Order</h2>
+            <div class="form-group">
+                <label for="cakeFlavor">Flavor:</label>
+                <input type="text" id="cakeFlavor" placeholder="e.g., Chocolate Fudge" required>
+            </div>
+            <div class="form-group">
+                <label for="deliveryDate">Delivery Date:</label>
+                <input type="date" id="deliveryDate" required>
+            </div>
+            <button id="addOrderBtn">Add Order</button>
+        </div>
+
+        <hr>
+
+        <div class="orders-section">
+            <h2>Current Orders</h2>
+            <div id="ordersList" class="orders-list">
+                </div>
+            <button id="clearOrdersBtn">Clear All Orders</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
