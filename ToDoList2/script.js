@@ -90,8 +90,12 @@ tasksContainer.addEventListener("click",(event)=>{
 
                 let taskList = getTasks();
                 taskList.splice(index,1);
+                localStorage.clear();//to ensure that the item deleted goes away
+                localStorage.setItem(storedTasks, JSON.stringify(taskList));
                 
-                console.log("Task delete");
+                
+                
+                console.log("Task deleted");
             }else{
                 console.log("Delete Operation Aborted!");
                 
@@ -110,13 +114,6 @@ tasksContainer.addEventListener("click",(event)=>{
         event.target.parentElement.classList.remove("task-completed")
 
         }
-
-
     }
-    
-
-
-
 }
 )
-
