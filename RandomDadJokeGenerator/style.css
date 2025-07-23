@@ -1,0 +1,213 @@
+/* General Body Styles: Bright, cheerful background with decorations */
+body {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif; /* A more playful font */
+    margin: 0;
+    padding: 20px;
+    /* Main background gradient for light mode */
+    background: linear-gradient(135deg, #FFD700 0%, #FF6347 100%); /* Warm, vibrant gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    color: #333; /* Darker text for contrast on light background */
+    text-align: center;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    transition: background-color 0.5s ease; /* Smooth transition for dark mode */
+
+    /* Background Decorations: Multiple radial gradients for a scattered, colorful effect */
+    background-image:
+        radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.15) 0%, transparent 50%), /* bottom-left white glow */
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 50%), /* top-right white glow */
+        radial-gradient(circle at 50% 10%, rgba(255, 105, 180, 0.2) 0%, transparent 60%), /* pink splash top */
+        radial-gradient(circle at 30% 90%, rgba(0, 255, 0, 0.2) 0%, transparent 60%), /* green splash bottom */
+        radial-gradient(circle at 70% 50%, rgba(138, 43, 226, 0.2) 0%, transparent 60%); /* purple splash middle */
+    background-size: 300px 300px, 300px 300px, 200px 200px, 200px 200px, 200px 200px;
+    background-position: bottom left, top right, 10% 10%, 90% 90%, 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps background fixed even if content overflows */
+}
+
+/* Main Container: Light, soft background with a playful shadow */
+.container {
+    background-color: #ffffff; /* Clean white background */
+    padding: 40px 30px;
+    border-radius: 20px; /* More rounded corners for a softer look */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Softer, larger shadow */
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Space between elements */
+    border: none; /* No hard border */
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth transition for dark mode */
+}
+
+/* Heading Style: Fun, colorful, and slightly bouncy */
+h1 {
+    color: #8A2BE2; /* Blue-violet for a pop */
+    margin-bottom: 10px;
+    font-size: 3em; /* Even larger heading for fun */
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1); /* Simple, playful shadow */
+    letter-spacing: -1px; /* Slightly tighter for a cartoon feel */
+    animation: bounceIn 1s ease-out; /* Add a little entry animation */
+    transition: color 0.5s ease, text-shadow 0.5s ease; /* Smooth transition for dark mode */
+}
+
+/* Keyframe for bounce animation */
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+/* Joke Display Box: Bright, inviting, like a thought bubble */
+.joke-box {
+    background-color: #FFFACD; /* Lemon Chiffon - light yellow */
+    border: 3px solid #FF69B4; /* Hot Pink border for fun */
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 1.5em; /* Larger, easier to read */
+    font-weight: 500; /* Slightly bolder */
+    min-height: 150px; /* More space for jokes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.6;
+    word-wrap: break-word;
+    color: #5D3FD3; /* Dark purple text for good contrast */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease, background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease; /* Smooth transition */
+}
+
+.joke-box:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Button Styling: Gradient, bouncy, and clearly clickable */
+button {
+    padding: 18px 40px;
+    background: linear-gradient(45deg, #FF69B4 0%, #FFD700 100%); /* Pink to Gold gradient */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Softly rounded */
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease; /* Smooth transitions for all properties */
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4); /* Pink glow shadow */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px; /* Add some space below the button */
+}
+
+button:hover {
+    background: linear-gradient(45deg, #FFD700 0%, #FF69B4 100%); /* Reverse gradient on hover */
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6); /* Stronger pink glow */
+    transform: translateY(-5px) scale(1.02); /* More pronounced lift and slight scale */
+}
+
+button:active {
+    background-color: #FF4500; /* Orange-red on click */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow on press */
+    transform: translateY(0); /* Press effect */
+}
+
+/* Add a subtle "shine" effect on button hover */
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    transition: all 0.5s ease;
+}
+
+button:hover::after {
+    left: 100%;
+}
+
+
+/* --- Responsive Adjustments (for Mobile Devices) --- */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 30px 15px;
+        gap: 15px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    .joke-box {
+        font-size: 1.2em;
+        min-height: 120px;
+        padding: 20px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 1em;
+        margin-bottom: 15px; /* Adjust margin for mobile */
+    }
+}
+
+/* --- Dark Mode Compatibility --- */
+/* "Big Word": @media (prefers-color-scheme: dark) */
+/* Definition: A media query that applies styles only when the user's operating system
+               or browser is set to a dark color scheme. */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); /* Darker gradient for background */
+        color: #f0f0f0; /* Light text for dark mode */
+        /* Dark mode specific background decorations - subtle white/cyan glows */
+        background-image:
+            radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 50% 10%, rgba(0, 255, 255, 0.1) 0%, transparent 60%), /* Cyan splash top */
+            radial-gradient(circle at 30% 90%, rgba(138, 43, 226, 0.1) 0%, transparent 60%), /* Purple splash bottom */
+            radial-gradient(circle at 70% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 60%); /* Pink splash middle */
+    }
+
+    .container {
+        background-color: #3b3f46; /* Darker container background */
+        box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2); /* Cyan glow shadow for dark mode */
+    }
+
+    h1 {
+        color: #00FFFF; /* Cyan for dark mode heading */
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.7); /* Stronger cyan glow */
+    }
+
+    .joke-box {
+        background-color: #2a2d33; /* Even darker joke box background */
+        border: 3px solid #00FFFF; /* Cyan border */
+        color: #E0FFFF; /* Light cyan text */
+        box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1); /* Inner glow */
+    }
+
+    button {
+        background: linear-gradient(45deg, #00FFFF 0%, #8A2BE2 100%); /* Cyan to Blue-violet gradient */
+        color: #1a1a1a; /* Dark text on bright button for contrast */
+        box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4); /* Cyan glow shadow */
+    }
+
+    button:hover {
+        background: linear-gradient(45deg, #8A2BE2 0%, #00FFFF 100%); /* Reverse gradient on hover */
+        box-shadow: 0 8px 20px rgba(0, 255, 255, 0.6); /* Stronger cyan glow */
+    }
+}
