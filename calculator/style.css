@@ -1,0 +1,91 @@
+
+
+@font-face {
+    font-family: 'calculator';
+    src: url(/fonts/Digital7-rg1mL.ttf);
+}
+
+body {
+    font-family: 'Inter', sans-serif; 
+    margin: 0;
+    padding: 0; 
+    background-color: #0A192F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    color: #f0f0f0; 
+    text-align: center;
+    overflow-x: hidden;
+    flex-direction: column; 
+}
+
+h1{
+    text-align: center;
+}
+
+#display{
+    display: flex;
+    font-size: 2em;
+    font-family: 'calculator';
+    color: #eee;
+    background-color: #222;
+    height:50px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 30px;
+
+}
+
+#container{
+    background-color: #333; 
+        padding: 40px 30px;
+    border-radius: 15px; 
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7); 
+    width: 100%;
+    max-width: 400px; 
+    display: flex;
+    flex-direction: column; 
+    gap: 25px; 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(8px);
+    margin-bottom: 30px;
+}
+
+button{
+    font-size: 1.4em;
+    width: 80px;
+    margin-bottom: 8px;
+    padding: 10px;
+}
+
+.num-btn{
+    font-weight: bolder;
+    border-radius: 10px;
+    background-color: #555;
+    color: #eee;
+}
+.op-btn{
+    border-radius: 10px;
+    font-weight: 900;
+    background-color: #cc6600;
+    color: #ffff;
+}
+.equal-btn{
+    border-radius: 10px;
+    width: 165px;
+    font-weight: bolder;
+    background-color: #008000;
+    color: #fff;
+}
+
+.op1-btn{
+    border-radius: 10px;
+    font-weight: bolder;
+    background-color: #f00808;
+    color: #fff;
+}
+
+button:active{
+    background-color: #b5b4b415;
+}
