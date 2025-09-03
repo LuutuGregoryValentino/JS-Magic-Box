@@ -1,70 +1,42 @@
-// calculator-server.js
 
-const express = require('express');
-const { Low, JSONFile } = require('lowdb');
-const cors = require('cors');
+//---geting the tools---
+const express = require("express");  // web server toolkit
+const {MongoClient} = require('mongodb'); // imports teh librayr
+const cors = require('cors');  //middleware to connect front and back running on different ports
+require('dotenv').config(); // to hide sesitive information thast critical to this server
 
-const app = express();
-const PORT = 3001; // Use a new port to avoid conflicts
+//---server and database addresses---
+const app = express(); //creates an insatce of the server
+const port = 3001;
 
-// Use a file to persist data
-const file = './db.json';
-const adapter = new JSONFile(file);
-const db = new Low(adapter);
+const URI = process.env.MONGODB_URI;
+const client = new MongoClient(URI); // object that manages our connection to the database
 
-// Middleware to parse JSON and allow CORS
-app.use(express.json());
-app.use(cors());
 
-// Set default data if the file doesn't exist
-const initializeDB = async () => {
-  await db.read();
-  db.data ||= { memory: 0 };
-  await db.write();
-};
+//---Middleware---
+     // security checkpoint and translation
+app.use(cors()) ; //requests must only come from the frontend
+app.use(express.json()); // auto converts all and any JSON data sent to the server to js odject
 
-// --- API Routes for Memory ---
 
-// Endpoint to save the current number to memory
-app.post('/memory', async (req, res) => {
-  try {
-    const { value } = req.body;
-    db.data.memory = value;
-    await db.write();
-    res.status(200).send({ message: 'Value saved to memory.', memory: db.data.memory });
-  } catch (error) {
-    res.status(500).send({ message: 'Failed to save to memory.', error: error.message });
+//---Main Functioning---
+async function run() {
+  try{
+    await client.connect(); //
+    const db = client.db('calculator-db');// opens the specific 'calculator-app' file folder in teh database
+    console.log('Successfully connected to MongoDB!');
+
+    app.get('/', (req,res)=>{
+      res.send('srver is running and connected to MongoDB!')
+    });
+
+    app.listen(port, ()=>{
+      console.log(`Server is listening on port ${port}`);
+    });
+  } catch(error){
+    console.error('Failed to connect to Mongodb ', error);
+    process.exit(1);
   }
-});
+}
 
-// Endpoint to get the number from memory
-app.get('/memory', async (req, res) => {
-  try {
-    await db.read();
-    res.status(200).send({ memory: db.data.memory });
-  } catch (error) {
-    res.status(500).send({ message: 'Failed to retrieve memory.', error: error.message });
-  }
-});
-
-// Endpoint to clear the memory
-app.delete('/memory', async (req, res) => {
-  try {
-    db.data.memory = 0;
-    await db.write();
-    res.status(200).send({ message: 'Memory cleared.', memory: db.data.memory });
-  } catch (error) {
-    res.status(500).send({ message: 'Failed to clear memory.', error: error.message });
-  }
-});
-
-
-// Start the server
-const startServer = async () => {
-  await initializeDB();
-  app.listen(PORT, () => {
-    console.log(`Calculator server running on http://localhost:${PORT}`);
-  });
-};
-
-startServer();
+run();
